@@ -8,6 +8,7 @@
   ],
   "jsRules": {},
   "rules": {
+    "interface-name": [true, "never-prefix"],
     "prettier": true
   },
   "rulesDirectory": []
