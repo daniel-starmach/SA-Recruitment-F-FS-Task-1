@@ -11,13 +11,13 @@ import {
 
 function* fetchReasons() {
   try {
-    const reasons = yield call(
+    const response = yield call(
       axios.get,
       "http://www.mocky.io/v2/5d21afe12f0000361dc462fa"
     );
     yield put({
       payload: {
-        reasons
+        reasons: response.data.reasons
       },
       type: REASONS_FETCH_SUCCESS
     });

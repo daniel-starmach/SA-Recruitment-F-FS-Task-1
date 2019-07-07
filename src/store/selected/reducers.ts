@@ -2,8 +2,8 @@ import {
   CUSTOM_REASON_SET,
   Mood,
   MOOD_SET,
-  REASONS_ADD,
-  REASONS_REMOVE,
+  REASONS_SET,
+  SELECTED_SEND_ERROR,
   SelectedActionTypes,
   SelectedState
 } from "./types";
@@ -29,26 +29,15 @@ export function selectedReducer(
         ...state,
         mood: action.payload.mood
       };
-    case REASONS_ADD:
-      if (state.selectedReasons.includes(action.payload.reason)) {
-        return state;
-      }
-
+    case REASONS_SET:
       return {
         ...state,
-        selectedReasons: [...state.selectedReasons, action.payload.reason]
+        selectedReasons: [...action.payload.reasons]
       };
-    case REASONS_REMOVE:
-      if (!state.selectedReasons.includes(action.payload.reason)) {
-        return state;
-      }
-
-      return {
-        ...state,
-        selectedReasons: state.selectedReasons.filter(
-          reason => reason !== action.payload.reason
-        )
-      };
+    case SELECTED_SEND_ERROR:
+      // tslint:disable-next-line:no-console
+      console.error("error", action.payload.message); // error handling
+      return state;
     default:
       return state;
   }

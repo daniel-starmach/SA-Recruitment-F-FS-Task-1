@@ -2,10 +2,17 @@ import {
   DataActionTypes,
   INITIAL_TOGGLE,
   LOADER_TOGGLE,
+  REASONS_FETCH,
   STEP_NEXT,
   STEP_PREV,
   USER_FETCH
 } from "./types";
+
+export function fetchReasons(): DataActionTypes {
+  return {
+    type: REASONS_FETCH
+  };
+}
 
 export function fetchUser(): DataActionTypes {
   return {

@@ -8,17 +8,13 @@ import {
   FormikActions,
   FormikErrors
 } from "formik";
-import { RadioButtonOwnProps, Step1FormValues } from "../forms";
+import { FormParams, RadioButtonOwnProps, Step1FormValues } from "../forms";
 import { ReactComponent as MoodAwesomeIcon } from "../icons/mood-awesome.svg";
 import { ReactComponent as MoodNotWellIcon } from "../icons/mood-not-well.svg";
 import { ReactComponent as MoodOkIcon } from "../icons/mood-ok.svg";
 import { DataActionTypes } from "../store/data/types";
 import { Mood, SelectedActionTypes } from "../store/selected/types";
 import RadioButton from "./RadioButton";
-
-interface FormParams {
-  isSubmitting: boolean;
-}
 
 interface Step1Props {
   mood: Mood;
@@ -93,7 +89,7 @@ const Step1: React.FC<Step1Props> = props => {
 
   return (
     <div className="step">
-      How are you feeling today, {props.userName}?
+      <h1>How are you feeling today, {props.userName}?</h1>
       <div>
         <Formik
           initialValues={initialValues}

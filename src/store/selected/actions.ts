@@ -2,26 +2,32 @@ import {
   CUSTOM_REASON_SET,
   Mood,
   MOOD_SET,
-  REASONS_ADD,
-  REASONS_REMOVE,
+  REASONS_SET,
+  SELECTED_SEND,
   SelectedActionTypes
 } from "./types";
 
-export function addReason(key: number): SelectedActionTypes {
+export function send(
+  customReason: string,
+  mood: Mood,
+  selectedReasons: number[]
+): SelectedActionTypes {
   return {
     payload: {
-      reason: key
+      customReason,
+      mood,
+      selectedReasons
     },
-    type: REASONS_ADD
+    type: SELECTED_SEND
   };
 }
 
-export function removeReason(key: number): SelectedActionTypes {
+export function setReasons(reasons: number[]): SelectedActionTypes {
   return {
     payload: {
-      reason: key
+      reasons
     },
-    type: REASONS_REMOVE
+    type: REASONS_SET
   };
 }
 

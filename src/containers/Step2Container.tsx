@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import Step2 from "../components/Step2";
 import { AppState } from "../store";
+import { fetchReasons } from "../store/data/actions";
 import { DataState } from "../store/data/types";
-import { SelectedState } from "../store/selected/types";
+import { send, setCustomReason, setReasons } from "../store/selected/actions";
+import { Mood, SelectedState } from "../store/selected/types";
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
-  return {};
+  return {
+    fetchReasonsAction: () => dispatch(fetchReasons()),
+    sendSelected: (
+      customReason: string,
+      mood: Mood,
+      selectedReasons: number[]
+    ) => dispatch(send(customReason, mood, selectedReasons)),
+    setCustomReason: (reason: string) => dispatch(setCustomReason(reason)),
+    setReasons: (reasons: number[]) => dispatch(setReasons(reasons))
+  };
 };
 
 const mapStateToProps = (state: AppState) => ({
@@ -18,10 +29,29 @@ const mapStateToProps = (state: AppState) => ({
 interface Step2ContainerProps {
   data: DataState;
   selected: SelectedState;
+
+  fetchReasonsAction: typeof fetchReasons;
+  sendSelected: typeof send;
+  setCustomReason: typeof setCustomReason;
+  setReasons: typeof setReasons;
 }
 
 const Step1Container: React.FC<Step2ContainerProps> = props => {
-  return <Step2 test={1} />;
+  const { fetchReasonsAction } = props;
+
+  useEffect(() => {
+    fetchReasonsAction();
+  }, [fetchReasonsAction]);
+
+  return (
+    <Step2
+      reasons={props.data.reasons}
+      {...props.selected}
+      sendSelected={props.sendSelected}
+      setCustomReason={props.setCustomReason}
+      setReasons={props.setReasons}
+    />
+  );
 };
 
 export default connect(

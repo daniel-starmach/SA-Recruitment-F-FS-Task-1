@@ -1,13 +1,14 @@
 export const CUSTOM_REASON_SET = "CUSTOM_REASON_SET";
 export const MOOD_SET = "MOOD_SET";
-export const REASONS_ADD = "REASONS_ADD";
-export const REASONS_REMOVE = "REASONS_REMOVE";
+export const REASONS_SET = "REASONS_SET";
+export const SELECTED_SEND = "SELECTED_SEND";
+export const SELECTED_SEND_ERROR = "SELECTED_SEND_ERROR";
 
 export enum Mood {
-  NotSelected,
-  NotWell,
-  OK,
-  Awesome
+  NotSelected = "NotSelected",
+  NotWell = "NotWell",
+  OK = "OK",
+  Awesome = "Awesome"
 }
 
 export interface SelectedState {
@@ -16,17 +17,15 @@ export interface SelectedState {
   selectedReasons: number[];
 }
 
-interface AddReasonAction {
-  type: typeof REASONS_ADD;
-  payload: {
-    reason: number;
-  };
+export interface SendAction {
+  type: typeof SELECTED_SEND;
+  payload: SelectedState;
 }
 
-interface RemoveReasonAction {
-  type: typeof REASONS_REMOVE;
+interface SendErrorAction {
+  type: typeof SELECTED_SEND_ERROR;
   payload: {
-    reason: number;
+    message: string;
   };
 }
 
@@ -44,8 +43,16 @@ interface SetMoodAction {
   };
 }
 
+interface SetReasonsAction {
+  type: typeof REASONS_SET;
+  payload: {
+    reasons: number[];
+  };
+}
+
 export type SelectedActionTypes =
-  | AddReasonAction
-  | RemoveReasonAction
+  | SendAction
+  | SendErrorAction
   | SetCustomReasonAction
-  | SetMoodAction;
+  | SetMoodAction
+  | SetReasonsAction;

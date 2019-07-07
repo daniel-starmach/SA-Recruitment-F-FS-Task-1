@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import Step3 from "./components/Step3";
 import Step1Container from "./containers/Step1Container";
 import Step2Container from "./containers/Step2Container";
 import { AppState } from "./store";
@@ -43,7 +44,7 @@ const App: React.FC<AppProps> = props => {
       step = <Step2Container />;
       break;
     case Steps.Step3:
-      step = <Step1Container />;
+      step = <Step3 />;
       break;
   }
 

@@ -40,6 +40,10 @@ interface PrevStepAction {
   type: typeof STEP_PREV;
 }
 
+interface ReasonsFetchAction {
+  type: typeof REASONS_FETCH;
+}
+
 interface ReasonsFetchSuccessAction {
   type: typeof REASONS_FETCH_SUCCESS;
   payload: {
@@ -73,6 +77,7 @@ export type DataActionTypes =
   | FetchErrorAction
   | NextStepAction
   | PrevStepAction
+  | ReasonsFetchAction
   | ReasonsFetchSuccessAction
   | ToggleInitialAction
   | ToggleLoaderAction

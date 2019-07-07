@@ -9,6 +9,7 @@ import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import { rootReducer } from "./store";
 import dataSaga from "./store/data/sagas";
+import selectedSaga from "./store/selected/sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -18,6 +19,7 @@ const store = createStore(
 );
 
 sagaMiddleware.run(dataSaga);
+sagaMiddleware.run(selectedSaga);
 
 ReactDOM.render(
   <Provider store={store}>
