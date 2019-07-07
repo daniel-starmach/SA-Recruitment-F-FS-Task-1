@@ -1,5 +1,26 @@
 import React from "react";
+import styled from "styled-components";
 import { CheckboxButtonOwnProps } from "../forms";
+
+const Label = styled.label`
+  background-color: #ddd;
+  cursor: pointer;
+  display: block;
+  margin: 5px 0;
+  padding: 10px 60px 10px 10px;
+  position: relative;
+
+  &:hover {
+    background-color: #ccc;
+  }
+
+  input {
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+`;
 
 const CheckboxButton: React.FC<CheckboxButtonOwnProps> = ({
   label,
@@ -7,8 +28,9 @@ const CheckboxButton: React.FC<CheckboxButtonOwnProps> = ({
   field,
   form
 }) => (
-  <label>
-    <div>{label}</div>
+  <Label>
+    {label}
+
     <input
       checked={field.value.includes(value)}
       type="checkbox"
@@ -25,7 +47,7 @@ const CheckboxButton: React.FC<CheckboxButtonOwnProps> = ({
         }
       }}
     />
-  </label>
+  </Label>
 );
 
 export default CheckboxButton;

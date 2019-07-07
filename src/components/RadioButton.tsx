@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { RadioButtonOwnProps } from "../forms";
 
-const Label = styled.label<{ for: string; type: string }>`
+const Label = styled.label<{ type: string }>`
   align-items: center;
   box-sizing: border-box;
   cursor: pointer;
@@ -61,7 +61,7 @@ const Button = styled.div`
     }
 
     &:focus + ${Label} {
-      border: 3px solid rgba(0, 0, 0, 0.3);
+      outline: 3px solid rgba(0, 0, 0, 0.3);
     }
   }
 `;
@@ -83,7 +83,7 @@ const RadioButton: React.FC<RadioButtonOwnProps> = ({
       value={value}
     />
 
-    <Label for={id} type={type}>
+    <Label htmlFor={id} type={type}>
       {icon}
     </Label>
   </Button>

@@ -1,18 +1,27 @@
 import {
   ErrorMessage,
   Field,
+  FieldProps,
   Form,
   Formik,
   FormikActions,
   FormikErrors
 } from "formik";
 import React from "react";
+import styled from "styled-components";
 import { CheckboxButtonOwnProps, FormParams, Step2FormValues } from "../forms";
 import { ReactComponent as MoodAwesomeIcon } from "../icons/mood-awesome.svg";
 import { ReactComponent as MoodNotWellIcon } from "../icons/mood-not-well.svg";
 import { ReactComponent as MoodOkIcon } from "../icons/mood-ok.svg";
 import { DataActionTypes } from "../store/data/types";
 import { Mood, SelectedActionTypes } from "../store/selected/types";
+import {
+  Error,
+  GoBackButton,
+  Heading,
+  Step2Icon,
+  SubmitButton
+} from "../StylesComponents";
 import CheckboxButton from "./CheckboxButton";
 
 interface Step2Props {
@@ -30,6 +39,18 @@ interface Step2Props {
   setCustomReason: (reason: string) => SelectedActionTypes;
   setReasons: (reasons: number[]) => SelectedActionTypes;
 }
+
+const TextInput = styled.input`
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  height: 30px;
+  margin-top: 5px;
+  width: 100%;
+`;
+
+const Section = styled.div`
+  margin-bottom: 20px;
+`;
 
 const Step2: React.FC<Step2Props> = props => {
   const initialValues: Step2FormValues = {
@@ -54,7 +75,7 @@ const Step2: React.FC<Step2Props> = props => {
 
   const formRender = ({ isSubmitting }: FormParams) => (
     <Form>
-      <div>
+      <Section>
         Select one of:
         {props.reasons.map((reason, key) => (
           <Field
@@ -65,18 +86,26 @@ const Step2: React.FC<Step2Props> = props => {
             )}
           />
         ))}
-      </div>
+      </Section>
 
-      <div>
+      <Section>
         Or type your own:
-        <Field name="customReason" />
-      </div>
+        <Field
+          name="customReason"
+          render={({ field }: FieldProps<Step2FormValues>) => (
+            <TextInput {...field} />
+          )}
+        />
+      </Section>
 
-      <ErrorMessage name="customReason" component="div" />
+      <ErrorMessage
+        name="customReason"
+        render={message => <Error>{message}</Error>}
+      />
 
-      <button type="submit" disabled={isSubmitting}>
+      <SubmitButton type="submit" disabled={isSubmitting}>
         Select
-      </button>
+      </SubmitButton>
     </Form>
   );
 
@@ -94,7 +123,7 @@ const Step2: React.FC<Step2Props> = props => {
     const errors: FormikErrors<Step2FormValues> = {};
 
     if (values.customReason === "" && values.selectedReasons.length === 0) {
-      errors.customReason = "Select one of defined reasons or write your own";
+      errors.customReason = "Select one of defined or write your own reason";
     }
 
     return errors;
@@ -102,9 +131,11 @@ const Step2: React.FC<Step2Props> = props => {
 
   return (
     <div className="step">
-      <h1>Why are you {mood}?</h1>
+      <Heading>
+        Why are you <Step2Icon type={props.mood}>{mood}</Step2Icon>?
+      </Heading>
 
-      <button onClick={props.prevStep}>go back</button>
+      <GoBackButton onClick={props.prevStep}>&laquo; go back</GoBackButton>
 
       <Formik
         enableReinitialize={true}

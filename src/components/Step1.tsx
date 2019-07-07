@@ -15,6 +15,7 @@ import { ReactComponent as MoodNotWellIcon } from "../icons/mood-not-well.svg";
 import { ReactComponent as MoodOkIcon } from "../icons/mood-ok.svg";
 import { DataActionTypes } from "../store/data/types";
 import { Mood, SelectedActionTypes } from "../store/selected/types";
+import { Error, Heading, SubmitButton } from "../StylesComponents";
 import RadioButton from "./RadioButton";
 
 interface Step1Props {
@@ -30,28 +31,9 @@ const ButtonContainer = styled.div`
   text-align: center;
 `;
 
-const Error = styled.div`
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-  color: #721c24;
-  margin: 5px 0;
-  padding: 2px;
-  text-align: center;
-`;
-
 const FormContainer = styled.div`
   margin: 0 auto;
   max-width: 250px;
-`;
-
-const SubmitButton = styled.button`
-  background-color: #343a40;
-  border-color: #343a40;
-  color: #fff;
-  margin-top: 10px;
-  padding: 10px;
-  text-transform: uppercase;
-  width: 100%;
 `;
 
 const Step1: React.FC<Step1Props> = props => {
@@ -131,7 +113,7 @@ const Step1: React.FC<Step1Props> = props => {
 
   return (
     <div className="step">
-      <h2>How are you feeling today, {props.userName}?</h2>
+      <Heading>How are you feeling today, {props.userName}?</Heading>
 
       <FormContainer>
         <Formik
