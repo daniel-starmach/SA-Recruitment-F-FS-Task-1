@@ -3,13 +3,14 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import Step1 from "../components/Step1";
 import { AppState } from "../store";
-import { nextStep } from "../store/data/actions";
+import { clearReasons, nextStep } from "../store/data/actions";
 import { DataState } from "../store/data/types";
 import { setMood } from "../store/selected/actions";
 import { Mood, SelectedState } from "../store/selected/types";
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
+    clearReasons: () => dispatch(clearReasons()),
     nextStep: () => dispatch(nextStep()),
     setMood: (mood: Mood) => dispatch(setMood(mood))
   };
@@ -24,6 +25,7 @@ interface Step1ContainerProps {
   data: DataState;
   selected: SelectedState;
 
+  clearReasons: typeof clearReasons;
   nextStep: typeof nextStep;
   setMood: typeof setMood;
 }
@@ -33,6 +35,7 @@ const Step1Container: React.FC<Step1ContainerProps> = props => {
     <Step1
       mood={props.selected.mood}
       userName={props.data.userName}
+      clearReasons={props.clearReasons}
       nextStep={props.nextStep}
       setMood={props.setMood}
     />

@@ -22,6 +22,7 @@ interface Step1Props {
   mood: Mood;
   userName: string;
 
+  clearReasons: () => DataActionTypes;
   nextStep: () => DataActionTypes;
   setMood: (mood: Mood) => SelectedActionTypes;
 }
@@ -96,6 +97,10 @@ const Step1: React.FC<Step1Props> = props => {
     values: Step1FormValues,
     actions: FormikActions<Step1FormValues>
   ) => {
+    if (props.mood !== values.mood) {
+      props.clearReasons();
+    }
+
     props.setMood(values.mood);
     props.nextStep();
     actions.setSubmitting(false);

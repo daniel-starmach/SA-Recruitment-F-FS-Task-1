@@ -8,6 +8,7 @@ import {
   FormikErrors
 } from "formik";
 import React from "react";
+import Loader from "react-loaders";
 import styled from "styled-components";
 import { CheckboxButtonOwnProps, FormParams, Step2FormValues } from "../forms";
 import { ReactComponent as MoodAwesomeIcon } from "../icons/mood-awesome.svg";
@@ -77,6 +78,9 @@ const Step2: React.FC<Step2Props> = props => {
     <Form>
       <Section>
         Select one of:
+        {props.reasons.length === 0 && (
+          <Loader active={true} type="ball-clip-rotate-multiple" />
+        )}
         {props.reasons.map((reason, key) => (
           <Field
             key={key}

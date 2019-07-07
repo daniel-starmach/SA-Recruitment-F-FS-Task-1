@@ -42,7 +42,9 @@ const Step1Container: React.FC<Step2ContainerProps> = props => {
   const { fetchReasonsAction } = props;
 
   useEffect(() => {
-    fetchReasonsAction(props.selected.mood);
+    if (props.data.reasons.length === 0) {
+      fetchReasonsAction(props.selected.mood);
+    }
   }, [fetchReasonsAction]);
 
   return (

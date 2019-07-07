@@ -14,7 +14,7 @@ function* fetchReasons(action: ReasonsFetchAction) {
   try {
     const response = yield call(
       axios.get,
-      "http://www.mocky.io/v2/5d21afe12f0000361dc462fa?mocky-delay=3000ms",
+      "http://www.mocky.io/v2/5d21afe12f0000361dc462fa?mocky-delay=1s",
       {
         params: {
           mood: action.payload.mood

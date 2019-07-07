@@ -4,10 +4,20 @@ import {
   INITIAL_TOGGLE,
   LOADER_TOGGLE,
   REASONS_FETCH,
+  REASONS_FETCH_SUCCESS,
   STEP_NEXT,
   STEP_PREV,
   USER_FETCH
 } from "./types";
+
+export function clearReasons(): DataActionTypes {
+  return {
+    payload: {
+      reasons: []
+    },
+    type: REASONS_FETCH_SUCCESS
+  };
+}
 
 export function fetchReasons(mood: Mood): DataActionTypes {
   return {
