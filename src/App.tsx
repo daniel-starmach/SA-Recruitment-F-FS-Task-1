@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import styled from "styled-components";
 import Step3 from "./components/Step3";
 import Step1Container from "./containers/Step1Container";
 import Step2Container from "./containers/Step2Container";
@@ -30,11 +31,11 @@ const App: React.FC<AppProps> = props => {
     fetchUserAction();
   }, [fetchUserAction]);
 
-  if (props.data.isInitial) {
-    return <div />; // todo: loader
-  }
+  let step = <div />; // todo: loader
 
-  let step = <div />;
+  if (props.data.isInitial) {
+    return step;
+  }
 
   switch (props.data.currentStep) {
     case Steps.Step1:
@@ -48,7 +49,7 @@ const App: React.FC<AppProps> = props => {
       break;
   }
 
-  return <div className="app">{step}</div>;
+  return <div>{step}</div>;
 };
 
 export default connect(

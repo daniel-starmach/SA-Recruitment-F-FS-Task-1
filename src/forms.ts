@@ -13,6 +13,8 @@ export interface CheckboxButtonProps {
 
 export interface RadioButtonProps {
   icon: ReactElement;
+  id: string;
+  type: string;
   value: Mood;
 }
 
