@@ -32,8 +32,14 @@ export const Heading = styled.h2`
   text-align: center;
 
   svg {
+    vertical-align: bottom;
     width: 28px;
   }
+`;
+
+export const Step = styled.div`
+  max-width: 320px;
+  padding: 30px;
 `;
 
 export const Step2Icon = styled.span<{ type: Mood }>`

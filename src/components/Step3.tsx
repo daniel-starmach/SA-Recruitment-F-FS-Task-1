@@ -1,11 +1,11 @@
 import React from "react";
-import { Heading } from "../StylesComponents";
+import { Heading, Step } from "../StylesComponents";
 
 const Step3: React.FC = () => {
   return (
-    <div className="step">
+    <Step>
       <Heading>Thanks for taking the survey!</Heading>
-    </div>
+    </Step>
   );
 };
 

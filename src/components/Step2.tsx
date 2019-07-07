@@ -20,6 +20,7 @@ import {
   Error,
   GoBackButton,
   Heading,
+  Step,
   Step2Icon,
   SubmitButton
 } from "../StylesComponents";
@@ -46,6 +47,7 @@ const TextInput = styled.input`
   box-sizing: border-box;
   height: 30px;
   margin-top: 5px;
+  padding: 0 5px;
   width: 100%;
 `;
 
@@ -134,7 +136,7 @@ const Step2: React.FC<Step2Props> = props => {
   };
 
   return (
-    <div className="step">
+    <Step>
       <Heading>
         Why are you <Step2Icon type={props.mood}>{mood}</Step2Icon>?
       </Heading>
@@ -148,7 +150,7 @@ const Step2: React.FC<Step2Props> = props => {
         onSubmit={onFormSubmit}
         render={formRender}
       />
-    </div>
+    </Step>
   );
 };
 

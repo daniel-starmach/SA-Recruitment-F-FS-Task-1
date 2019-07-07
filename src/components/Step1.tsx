@@ -15,7 +15,7 @@ import { ReactComponent as MoodNotWellIcon } from "../icons/mood-not-well.svg";
 import { ReactComponent as MoodOkIcon } from "../icons/mood-ok.svg";
 import { DataActionTypes } from "../store/data/types";
 import { Mood, SelectedActionTypes } from "../store/selected/types";
-import { Error, Heading, SubmitButton } from "../StylesComponents";
+import { Error, Heading, Step, SubmitButton } from "../StylesComponents";
 import RadioButton from "./RadioButton";
 
 interface Step1Props {
@@ -117,7 +117,7 @@ const Step1: React.FC<Step1Props> = props => {
   };
 
   return (
-    <div className="step">
+    <Step>
       <Heading>How are you feeling today, {props.userName}?</Heading>
 
       <FormContainer>
@@ -129,7 +129,7 @@ const Step1: React.FC<Step1Props> = props => {
           render={formRender}
         />
       </FormContainer>
-    </div>
+    </Step>
   );
 };
 
