@@ -3,7 +3,6 @@ import {
   DataState,
   FETCH_ERROR,
   INITIAL_TOGGLE,
-  LOADER_TOGGLE,
   REASONS_FETCH_SUCCESS,
   STEP_MAX,
   STEP_MIN,
@@ -15,7 +14,6 @@ import {
 const initialState: DataState = {
   currentStep: 1,
   isInitial: true,
-  isLoading: false,
   reasons: [],
   userName: "N/A"
 };
@@ -33,11 +31,6 @@ export function dataReducer(
       return {
         ...state,
         isInitial: false
-      };
-    case LOADER_TOGGLE:
-      return {
-        ...state,
-        isLoading: action.payload.state
       };
     case REASONS_FETCH_SUCCESS:
       return {

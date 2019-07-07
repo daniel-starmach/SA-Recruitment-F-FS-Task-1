@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Step } from "../StylesComponents";
+import { Heading, Step } from "./StylesComponents";
 
 const Step3: React.FC = () => {
   return (

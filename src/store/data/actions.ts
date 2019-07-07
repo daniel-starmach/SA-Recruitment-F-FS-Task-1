@@ -1,8 +1,6 @@
 import { Mood } from "../selected/types";
 import {
   DataActionTypes,
-  INITIAL_TOGGLE,
-  LOADER_TOGGLE,
   REASONS_FETCH,
   REASONS_FETCH_SUCCESS,
   STEP_NEXT,
@@ -43,20 +41,5 @@ export function nextStep(): DataActionTypes {
 export function prevStep(): DataActionTypes {
   return {
     type: STEP_PREV
-  };
-}
-
-export function toggleInitial(): DataActionTypes {
-  return {
-    type: INITIAL_TOGGLE
-  };
-}
-
-export function toggleLoader(state: boolean): DataActionTypes {
-  return {
-    payload: {
-      state
-    },
-    type: LOADER_TOGGLE
   };
 }

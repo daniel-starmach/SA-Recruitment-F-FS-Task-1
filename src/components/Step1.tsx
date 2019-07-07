@@ -1,6 +1,3 @@
-import React from "react";
-import styled from "styled-components";
-
 import {
   ErrorMessage,
   Field,
@@ -9,23 +6,16 @@ import {
   FormikActions,
   FormikErrors
 } from "formik";
+import React from "react";
+import styled from "styled-components";
 import { FormParams, RadioButtonOwnProps, Step1FormValues } from "../forms";
 import { ReactComponent as MoodAwesomeIcon } from "../icons/mood-awesome.svg";
 import { ReactComponent as MoodNotWellIcon } from "../icons/mood-not-well.svg";
 import { ReactComponent as MoodOkIcon } from "../icons/mood-ok.svg";
 import { DataActionTypes } from "../store/data/types";
 import { Mood, SelectedActionTypes } from "../store/selected/types";
-import { Error, Heading, Step, SubmitButton } from "../StylesComponents";
 import RadioButton from "./RadioButton";
-
-interface Step1Props {
-  mood: Mood;
-  userName: string;
-
-  clearReasons: () => DataActionTypes;
-  nextStep: () => DataActionTypes;
-  setMood: (mood: Mood) => SelectedActionTypes;
-}
+import { Error, Heading, Step, SubmitButton } from "./StylesComponents";
 
 const ButtonContainer = styled.div`
   margin: 0 -10px;
@@ -36,6 +26,15 @@ const FormContainer = styled.div`
   margin: 0 auto;
   max-width: 250px;
 `;
+
+interface Step1Props {
+  mood: Mood;
+  userName: string;
+
+  clearReasons: () => DataActionTypes;
+  nextStep: () => DataActionTypes;
+  setMood: (mood: Mood) => SelectedActionTypes;
+}
 
 const Step1: React.FC<Step1Props> = props => {
   const initialValues: Step1FormValues = {

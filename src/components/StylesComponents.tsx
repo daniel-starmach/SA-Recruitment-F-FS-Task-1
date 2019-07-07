@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Mood } from "./store/selected/types";
+import { Mood } from "../store/selected/types";
 
 export const Error = styled.div`
   background-color: #f8d7da;

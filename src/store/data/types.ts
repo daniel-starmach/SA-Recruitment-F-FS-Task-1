@@ -2,7 +2,6 @@ import { Mood } from "../selected/types";
 
 export const FETCH_ERROR = "FETCH_ERROR";
 export const INITIAL_TOGGLE = "INITIAL_TOGGLE";
-export const LOADER_TOGGLE = "LOADER_TOGGLE";
 export const REASONS_FETCH = "REASONS_FETCH";
 export const REASONS_FETCH_SUCCESS = "REASONS_FETCH_SUCCESS";
 export const STEP_NEXT = "STEP_NEXT";
@@ -23,7 +22,6 @@ export interface DataState {
   userName: string;
   reasons: string[];
   isInitial: boolean;
-  isLoading: boolean;
   currentStep: number;
 }
 
@@ -60,13 +58,6 @@ interface ToggleInitialAction {
   type: typeof INITIAL_TOGGLE;
 }
 
-interface ToggleLoaderAction {
-  type: typeof LOADER_TOGGLE;
-  payload: {
-    state: boolean;
-  };
-}
-
 interface UserFetchAction {
   type: typeof USER_FETCH;
 }
@@ -85,6 +76,5 @@ export type DataActionTypes =
   | ReasonsFetchAction
   | ReasonsFetchSuccessAction
   | ToggleInitialAction
-  | ToggleLoaderAction
   | UserFetchAction
   | UserFetchSuccessAction;

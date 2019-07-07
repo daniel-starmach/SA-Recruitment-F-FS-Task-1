@@ -16,6 +16,7 @@ import { ReactComponent as MoodNotWellIcon } from "../icons/mood-not-well.svg";
 import { ReactComponent as MoodOkIcon } from "../icons/mood-ok.svg";
 import { DataActionTypes } from "../store/data/types";
 import { Mood, SelectedActionTypes } from "../store/selected/types";
+import CheckboxButton from "./CheckboxButton";
 import {
   Error,
   GoBackButton,
@@ -23,8 +24,20 @@ import {
   Step,
   Step2Icon,
   SubmitButton
-} from "../StylesComponents";
-import CheckboxButton from "./CheckboxButton";
+} from "./StylesComponents";
+
+const TextInput = styled.input`
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  height: 30px;
+  margin-top: 5px;
+  padding: 0 5px;
+  width: 100%;
+`;
+
+const Section = styled.div`
+  margin-bottom: 20px;
+`;
 
 interface Step2Props {
   customReason: string;
@@ -41,19 +54,6 @@ interface Step2Props {
   setCustomReason: (reason: string) => SelectedActionTypes;
   setReasons: (reasons: number[]) => SelectedActionTypes;
 }
-
-const TextInput = styled.input`
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  height: 30px;
-  margin-top: 5px;
-  padding: 0 5px;
-  width: 100%;
-`;
-
-const Section = styled.div`
-  margin-bottom: 20px;
-`;
 
 const Step2: React.FC<Step2Props> = props => {
   const initialValues: Step2FormValues = {
