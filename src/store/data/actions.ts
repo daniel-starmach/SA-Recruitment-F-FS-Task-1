@@ -1,3 +1,4 @@
+import { Mood } from "../selected/types";
 import {
   DataActionTypes,
   INITIAL_TOGGLE,
@@ -8,8 +9,11 @@ import {
   USER_FETCH
 } from "./types";
 
-export function fetchReasons(): DataActionTypes {
+export function fetchReasons(mood: Mood): DataActionTypes {
   return {
+    payload: {
+      mood
+    },
     type: REASONS_FETCH
   };
 }

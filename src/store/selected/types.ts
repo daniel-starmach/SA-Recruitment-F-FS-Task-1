@@ -4,6 +4,8 @@ export const REASONS_SET = "REASONS_SET";
 export const SELECTED_SEND = "SELECTED_SEND";
 export const SELECTED_SEND_ERROR = "SELECTED_SEND_ERROR";
 
+// todo: wyciągnąć współne typy do jednego pliku
+
 export enum Mood {
   NotSelected = "NotSelected",
   NotWell = "NotWell",

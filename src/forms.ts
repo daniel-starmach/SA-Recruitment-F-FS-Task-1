@@ -17,7 +17,7 @@ export interface RadioButtonProps {
 }
 
 export interface Step1FormValues {
-  mood: Mood;
+  [mood: string]: Mood;
 }
 
 export interface Step2FormValues {

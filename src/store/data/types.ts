@@ -1,3 +1,5 @@
+import { Mood } from "../selected/types";
+
 export const FETCH_ERROR = "FETCH_ERROR";
 export const INITIAL_TOGGLE = "INITIAL_TOGGLE";
 export const LOADER_TOGGLE = "LOADER_TOGGLE";
@@ -40,7 +42,10 @@ interface PrevStepAction {
   type: typeof STEP_PREV;
 }
 
-interface ReasonsFetchAction {
+export interface ReasonsFetchAction {
+  payload: {
+    mood: Mood;
+  };
   type: typeof REASONS_FETCH;
 }
 

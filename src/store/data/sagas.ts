@@ -5,15 +5,21 @@ import {
   INITIAL_TOGGLE,
   REASONS_FETCH,
   REASONS_FETCH_SUCCESS,
+  ReasonsFetchAction,
   USER_FETCH,
   USER_FETCH_SUCCESS
 } from "./types";
 
-function* fetchReasons() {
+function* fetchReasons(action: ReasonsFetchAction) {
   try {
     const response = yield call(
       axios.get,
-      "http://www.mocky.io/v2/5d21afe12f0000361dc462fa"
+      "http://www.mocky.io/v2/5d21afe12f0000361dc462fa",
+      {
+        params: {
+          mood: action.payload.mood
+        }
+      }
     );
     yield put({
       payload: {

@@ -92,6 +92,7 @@ const Step1: React.FC<Step1Props> = props => {
       <h1>How are you feeling today, {props.userName}?</h1>
       <div>
         <Formik
+          enableReinitialize={true}
           initialValues={initialValues}
           validate={validateForm}
           onSubmit={onFormSubmit}

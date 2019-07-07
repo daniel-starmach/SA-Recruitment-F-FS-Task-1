@@ -7,15 +7,11 @@ import {
   FormikErrors
 } from "formik";
 import React from "react";
-import {
-  CheckboxButtonOwnProps,
-  FormParams,
-  Step1FormValues,
-  Step2FormValues
-} from "../forms";
+import { CheckboxButtonOwnProps, FormParams, Step2FormValues } from "../forms";
 import { ReactComponent as MoodAwesomeIcon } from "../icons/mood-awesome.svg";
 import { ReactComponent as MoodNotWellIcon } from "../icons/mood-not-well.svg";
 import { ReactComponent as MoodOkIcon } from "../icons/mood-ok.svg";
+import { DataActionTypes } from "../store/data/types";
 import { Mood, SelectedActionTypes } from "../store/selected/types";
 import CheckboxButton from "./CheckboxButton";
 
@@ -25,6 +21,7 @@ interface Step2Props {
   reasons: string[];
   selectedReasons: number[];
 
+  prevStep: () => DataActionTypes;
   sendSelected: (
     customReason: string,
     mood: Mood,
@@ -85,7 +82,7 @@ const Step2: React.FC<Step2Props> = props => {
 
   const onFormSubmit = (
     values: Step2FormValues,
-    actions: FormikActions<Step1FormValues>
+    actions: FormikActions<Step2FormValues>
   ) => {
     props.setCustomReason(values.customReason);
     props.setReasons(values.selectedReasons);
@@ -107,7 +104,10 @@ const Step2: React.FC<Step2Props> = props => {
     <div className="step">
       <h1>Why are you {mood}?</h1>
 
+      <button onClick={props.prevStep}>go back</button>
+
       <Formik
+        enableReinitialize={true}
         initialValues={initialValues}
         validate={validateForm}
         onSubmit={onFormSubmit}

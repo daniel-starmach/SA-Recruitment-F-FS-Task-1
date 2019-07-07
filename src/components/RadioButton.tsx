@@ -6,11 +6,18 @@ const RadioButton: React.FC<RadioButtonOwnProps> = ({
   value,
   field,
   form
-}) => (
-  <label>
-    <div>{icon}</div>
-    <input type="radio" {...field} value={value} />
-  </label>
-);
+}) => {
+  return (
+    <label>
+      <div>{icon}</div>
+      <input
+        type="radio"
+        {...field}
+        checked={form.values[field.name] === value}
+        value={value}
+      />
+    </label>
+  );
+};
 
 export default RadioButton;
