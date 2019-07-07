@@ -1,4 +1,17 @@
-import { DataActionTypes, LOADER_TOGGLE, STEP_NEXT, STEP_PREV } from "./types";
+import {
+  DataActionTypes,
+  INITIAL_TOGGLE,
+  LOADER_TOGGLE,
+  STEP_NEXT,
+  STEP_PREV,
+  USER_FETCH
+} from "./types";
+
+export function fetchUser(): DataActionTypes {
+  return {
+    type: USER_FETCH
+  };
+}
 
 export function nextStep(): DataActionTypes {
   return {
@@ -9,6 +22,12 @@ export function nextStep(): DataActionTypes {
 export function prevStep(): DataActionTypes {
   return {
     type: STEP_PREV
+  };
+}
+
+export function toggleInitial(): DataActionTypes {
+  return {
+    type: INITIAL_TOGGLE
   };
 }
 

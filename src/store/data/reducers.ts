@@ -2,6 +2,7 @@ import {
   DataActionTypes,
   DataState,
   FETCH_ERROR,
+  INITIAL_TOGGLE,
   LOADER_TOGGLE,
   REASONS_FETCH_SUCCESS,
   STEP_MAX,
@@ -13,6 +14,7 @@ import {
 
 const initialState: DataState = {
   currentStep: 1,
+  isInitial: true,
   isLoading: false,
   reasons: [],
   userName: "N/A"
@@ -25,8 +27,13 @@ export function dataReducer(
   switch (action.type) {
     case FETCH_ERROR:
       // tslint:disable-next-line:no-console
-      console.error(action.payload.message); // error handling
+      console.error("error", action.payload.message); // error handling
       return state;
+    case INITIAL_TOGGLE:
+      return {
+        ...state,
+        isInitial: false
+      };
     case LOADER_TOGGLE:
       return {
         ...state,

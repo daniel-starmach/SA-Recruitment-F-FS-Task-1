@@ -1,44 +1,53 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import "./App.css";
-import logo from "./logo.svg";
+import { Dispatch } from "redux";
+import Step1Container from "./containers/Step1Container";
+import Step2Container from "./containers/Step2Container";
 import { AppState } from "./store";
-import { DataState } from "./store/data/types";
-import { setMood } from "./store/selected/actions";
-import { SelectedState } from "./store/selected/types";
+import { fetchUser } from "./store/data/actions";
+import { DataState, Steps } from "./store/data/types";
 
-const mapDispatchToProps = { setMood };
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    fetchUserAction: () => dispatch(fetchUser())
+  };
+};
 
 const mapStateToProps = (state: AppState) => ({
-  data: state.data,
-  selected: state.selected
+  data: state.data
 });
 
 interface AppProps {
   data: DataState;
-  selected: SelectedState;
-  setMood: typeof setMood;
+  fetchUserAction: typeof fetchUser;
 }
 
 const App: React.FC<AppProps> = props => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const { fetchUserAction } = props;
+
+  useEffect(() => {
+    fetchUserAction();
+  }, [fetchUserAction]);
+
+  if (props.data.isInitial) {
+    return <div />; // todo: loader
+  }
+
+  let step = <div />;
+
+  switch (props.data.currentStep) {
+    case Steps.Step1:
+      step = <Step1Container />;
+      break;
+    case Steps.Step2:
+      step = <Step2Container />;
+      break;
+    case Steps.Step3:
+      step = <Step1Container />;
+      break;
+  }
+
+  return <div className="app">{step}</div>;
 };
 
 export default connect(

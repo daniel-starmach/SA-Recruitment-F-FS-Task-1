@@ -1,4 +1,5 @@
 export const FETCH_ERROR = "FETCH_ERROR";
+export const INITIAL_TOGGLE = "INITIAL_TOGGLE";
 export const LOADER_TOGGLE = "LOADER_TOGGLE";
 export const REASONS_FETCH = "REASONS_FETCH";
 export const REASONS_FETCH_SUCCESS = "REASONS_FETCH_SUCCESS";
@@ -7,12 +8,19 @@ export const STEP_PREV = "STEP_PREV";
 export const USER_FETCH = "USER_FETCH";
 export const USER_FETCH_SUCCESS = "USER_FETCH_SUCCESS";
 
-export const STEP_MIN = 1;
-export const STEP_MAX = 3;
+export const STEP_MIN = 1; // todo: change with enum
+export const STEP_MAX = 3; // todo: change with enum
+
+export enum Steps {
+  Step1 = 1,
+  Step2,
+  Step3
+}
 
 export interface DataState {
   userName: string;
   reasons: string[];
+  isInitial: boolean;
   isLoading: boolean;
   currentStep: number;
 }
@@ -39,11 +47,19 @@ interface ReasonsFetchSuccessAction {
   };
 }
 
+interface ToggleInitialAction {
+  type: typeof INITIAL_TOGGLE;
+}
+
 interface ToggleLoaderAction {
   type: typeof LOADER_TOGGLE;
   payload: {
     state: boolean;
   };
+}
+
+interface UserFetchAction {
+  type: typeof USER_FETCH;
 }
 
 interface UserFetchSuccessAction {
@@ -58,5 +74,7 @@ export type DataActionTypes =
   | NextStepAction
   | PrevStepAction
   | ReasonsFetchSuccessAction
+  | ToggleInitialAction
   | ToggleLoaderAction
+  | UserFetchAction
   | UserFetchSuccessAction;
