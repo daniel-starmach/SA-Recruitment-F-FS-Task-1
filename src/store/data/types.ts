@@ -9,8 +9,8 @@ export const STEP_PREV = "STEP_PREV";
 export const USER_FETCH = "USER_FETCH";
 export const USER_FETCH_SUCCESS = "USER_FETCH_SUCCESS";
 
-export const STEP_MIN = 1; // todo: change with enum
-export const STEP_MAX = 3; // todo: change with enum
+export const STEP_MIN = 1;
+export const STEP_MAX = 3;
 
 export enum Steps {
   Step1 = 1,
