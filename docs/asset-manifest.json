@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.84329080.chunk.css",
+    "main.js": "/static/js/main.34c54e54.chunk.js",
+    "main.js.map": "/static/js/main.34c54e54.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.c0f22bf7.chunk.js": "/static/js/2.c0f22bf7.chunk.js",
+    "static/js/2.c0f22bf7.chunk.js.map": "/static/js/2.c0f22bf7.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.196e9c642858890dd657b79aabd53c10.js": "/precache-manifest.196e9c642858890dd657b79aabd53c10.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.84329080.chunk.css.map": "/static/css/main.84329080.chunk.css.map",
+    "static/media/mood-awesome.c618921c.svg": "/static/media/mood-awesome.c618921c.svg",
+    "static/media/mood-not-well.f48f7660.svg": "/static/media/mood-not-well.f48f7660.svg",
+    "static/media/mood-ok.8f6ba41e.svg": "/static/media/mood-ok.8f6ba41e.svg"
+  }
+}
